@@ -43,7 +43,8 @@ module RSS
 
     def text(str)
       ensure_start
-      super(str.encode!(@encoding,@xml_enc))
+      str.encode!(@encoding,@xml_enc) if @xml_enc
+      super(str)
     end
 
     def start_element(name)
