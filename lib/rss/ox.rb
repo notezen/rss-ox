@@ -54,6 +54,7 @@ module RSS
       @started = name
     end
     def end_element(name)
+      ensure_start
       tag_end name
     end
 
