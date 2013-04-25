@@ -21,8 +21,11 @@ module RSS
 
     def end_instruct(target)
       if target == 'xml'
-        @xml_enc = @attr['encoding']
-        xmldecl(@attr['version'], 'UTF-8', @attr['standalone'] == 'yes')
+        xmldecl(@attr['version'], nil, @attr['standalone'] == 'yes')
+        if @attr['encoding']
+          @xml_enc = @attr['encoding']
+          @encoding = 'UTF-8'
+        end
       else
         content=''
         @attr.each { |k,v| content<<"#{k}=\"#{v}\" " }
